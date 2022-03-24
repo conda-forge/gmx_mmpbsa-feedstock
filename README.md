@@ -5,7 +5,7 @@ Home: https://github.com/Valdes-Tresanco-MS/gmx_MMPBSA
 
 Package license: GPL-3.0-or-later
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gmx_mmpbsa-feedstock/blob/master/LICENSE.txt)
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gmx_mmpbsa-feedstock/blob/main/LICENSE.txt)
 
 Summary: gmx_MMPBSA is a new tool based on AMBER's MMPBSA.py aiming to perform end-state free energy calculations with GROMACS files.
 
@@ -16,13 +16,8 @@ Documentation: https://valdes-tresanco-ms.github.io/gmx_MMPBSA
 gmx_MMPBSA is a new tool based on AMBER's MMPBSA.py aiming to perform end-state free energy calculations with
 GROMACS files. It works with all GROMACS versions along with AmberTools20 or 21 and brings improvements in
 compatibility, versatility, analyses, and parallelization compared to existing programs.
-Multiple calculations can be performed with gmx_MMPBSA such as:
-- Normal binding free energies
-- Alanine scanning
-- Decomposition schemes
-- Entropy corrections
-- Stability
-- QM/MMGBSA
+Multiple calculations can be performed with gmx_MMPBSA such as Normal binding free energies, Alanine scanning,
+Decomposition schemes, Entropy corrections, Stability and QM/MMGBSA
 
 
 Current build status
@@ -31,8 +26,8 @@ Current build status
 
 <table><tr><td>All platforms:</td>
     <td>
-      <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15070&branchName=master">
-        <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/gmx_mmpbsa-feedstock?branchName=master">
+      <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15070&branchName=main">
+        <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/gmx_mmpbsa-feedstock?branchName=main">
       </a>
     </td>
   </tr>
