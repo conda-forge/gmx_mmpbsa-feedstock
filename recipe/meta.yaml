@@ -1,5 +1,5 @@
 {% set name = "gmx_MMPBSA" %}
-{% set version = "1.5.0.3" %}
+{% set version = "1.5.6" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 122c1224733696d3d38e96b00666856d255bfa89184d35e195678ed78679ede6
+  sha256: 72f18209bf33d7c26865ec6c21d850b3bbacb425c636ea5c80b06174eb1a988f
 
 build:
   number: 0
   noarch: python
   entry_points:
-     - gmx_MMPBSA = GMXMMPBSA.app:gmxmmpbsa
-  script: "{{ PYTHON }} -m pip install . -vv"
+    - gmx_MMPBSA = GMXMMPBSA.app:gmxmmpbsa
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
@@ -44,7 +44,7 @@ about:
   license: GPL-3.0-or-later
   license_family: GPL
   license_file: LICENSE.txt
-  summary: "gmx_MMPBSA is a new tool based on AMBER's MMPBSA.py aiming to perform end-state free energy calculations with GROMACS files."
+  summary: gmx_MMPBSA is a new tool based on AMBER's MMPBSA.py aiming to perform end-state free energy calculations with GROMACS files.
   description: |
     gmx_MMPBSA is a new tool based on AMBER's MMPBSA.py aiming to perform end-state free energy calculations with 
     GROMACS files. It works with all GROMACS versions along with AmberTools20 or 21 and brings improvements in 
