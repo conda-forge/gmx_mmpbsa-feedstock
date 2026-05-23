@@ -1,13 +1,13 @@
 {% set name = "gmx_MMPBSA" %}
-{% set version = "1.6.3" %}
-{% set sha256 = "c0e92afb48923bd03efa312a6707912f639e1597fb84769a449e4de2a375351f" %}
+{% set version = "1.6.5" %}
+{% set sha256 = "59525eecad280406e77c3dcb78ebaffc05a50c0cbc29376ffcf79f25f0c0b9b6" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name|lower }}/{{ name|lower }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
@@ -15,23 +15,29 @@ build:
   noarch: python
   entry_points:
      - gmx_MMPBSA = GMXMMPBSA.app:gmxmmpbsa
+     - gmx_MMPBSA_ana = GMXMMPBSA.app:gmxmmpbsa_ana
+     - gmx_MMPBSA_test = GMXMMPBSA.app:gmxmmpbsa_test
   script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   host:
-    - python >=3.9
+    - python =3.11
     - pip
+    - setuptools <82
+    - versioneer
+    - wheel
   run:
-    - python >=3.9
-    - pandas 1.2.2
-    - seaborn <0.12
-    - mpi4py <=3.1.5
-    - scipy >=1.6.1
-    - ambertools >=20
-    - matplotlib-base 3.5.2
-    - h5py
-    - gromacs
+    - python =3.11
+    - numpy =1.26.4
+    - ambertools <24
+    - mpi4py =4.0.1
+    - matplotlib =3.7.3
+    - scipy =1.14.1
+    - parmed <5
+    - pandas =1.5.3
+    - seaborn =0.11.2
     - tqdm
+    - git
 
 test:
   imports:
