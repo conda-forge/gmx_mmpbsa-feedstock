@@ -15,6 +15,7 @@ build:
   noarch: python
   entry_points:
     - gmx_MMPBSA = GMXMMPBSA.app:gmxmmpbsa
+    - amber_MMPBSA = GMXMMPBSA.app:gmxmmpbsa_amber
     - gmx_MMPBSA_ana = GMXMMPBSA.app:gmxmmpbsa_ana
     - gmx_MMPBSA_test = GMXMMPBSA.app:gmxmmpbsa_test
   script: "{{ PYTHON }} -m pip install . -vv"
@@ -48,6 +49,7 @@ test:
   commands:
     - pip check
     - gmx_MMPBSA -h
+    - amber_MMPBSA -h
 
 about:
   home: https://github.com/Valdes-Tresanco-MS/gmx_MMPBSA
