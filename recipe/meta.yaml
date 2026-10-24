@@ -1,6 +1,6 @@
 {% set name = "gmx_MMPBSA" %}
-{% set version = "1.7.0" %}
-{% set sha256 = "c5fe2505ed5ecfedc41d1f36b1948173cbd5e20a266cb3d7882a7f06b331430a" %}
+{% set version = "1.7.1" %}
+{% set sha256 = "2b497bd7c031c47dfc9d9de7c9744cac64350c7e28ac139bb3a81864166a3208" %}
 
 package:
   name: {{ name|lower }}
