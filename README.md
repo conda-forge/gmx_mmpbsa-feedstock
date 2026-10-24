@@ -14,8 +14,9 @@ Development: https://github.com/Valdes-Tresanco-MS/gmx_MMPBSA
 Documentation: https://valdes-tresanco-ms.github.io/gmx_MMPBSA
 
 gmx_MMPBSA is a new tool based on AMBER's MMPBSA.py aiming to perform end-state free energy calculations with
-GROMACS files. It works with all GROMACS versions along with AmberTools20 or 21 and brings improvements in
-compatibility, versatility, analyses, and parallelization compared to existing programs.
+GROMACS files, with a native AMBER topology interface through amber_MMPBSA.
+The supported environment uses Python >=3.11,<3.13, AmberTools >=24.8,<27, and GROMACS >=2022,<2027.
+The graphical analyzer uses PyQt6.
 Multiple calculations can be performed with gmx_MMPBSA such as Normal binding free energies, Alanine scanning,
 Decomposition schemes, Entropy corrections, Stability and QM/MMGBSA
 
