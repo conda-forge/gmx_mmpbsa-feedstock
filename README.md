@@ -14,8 +14,10 @@ Development: https://github.com/Valdes-Tresanco-MS/gmx_MMPBSA
 Documentation: https://valdes-tresanco-ms.github.io/gmx_MMPBSA
 
 gmx_MMPBSA is a new tool based on AMBER's MMPBSA.py aiming to perform end-state free energy calculations with
-GROMACS files. It works with all GROMACS versions along with AmberTools20 or 21 and brings improvements in
-compatibility, versatility, analyses, and parallelization compared to existing programs.
+GROMACS files. It works with all GROMACS versions and also supports native AMBER inputs through amber_MMPBSA.
+Release testing covers GROMACS >=2022,<2027 and AmberTools >=24.8,<27 with Python >=3.11,<3.13.
+The Conda recipe selects these tested tool versions.
+The graphical analyzer uses PyQt6.
 Multiple calculations can be performed with gmx_MMPBSA such as Normal binding free energies, Alanine scanning,
 Decomposition schemes, Entropy corrections, Stability and QM/MMGBSA
 
@@ -133,6 +135,7 @@ mamba repoquery depends gmx_mmpbsa --channel conda-forge
 </details>
 
 
+
 About conda-forge
 =================
 
@@ -147,9 +150,7 @@ for each of the installable packages. Such a repository is known as a *feedstock
 A feedstock is made up of a conda recipe (the instructions on what and how to build
 the package) and the necessary configurations for automatic building using freely
 available continuous integration services. Thanks to the awesome service provided by
-[Azure](https://azure.microsoft.com/en-us/services/devops/), [GitHub](https://github.com/),
-[CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/),
-[Drone](https://cloud.drone.io/welcome), and [TravisCI](https://travis-ci.com/)
+[Azure](https://azure.microsoft.com/en-us/services/devops/) and [GitHub](https://github.com/)
 it is possible to build and upload installable packages to the
 [conda-forge](https://anaconda.org/conda-forge) [anaconda.org](https://anaconda.org/)
 channel for Linux, Windows and OSX respectively.

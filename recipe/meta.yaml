@@ -1,6 +1,7 @@
+{% set python_min = "3.11" %}
 {% set name = "gmx_MMPBSA" %}
-{% set version = "1.7.0" %}
-{% set sha256 = "c5fe2505ed5ecfedc41d1f36b1948173cbd5e20a266cb3d7882a7f06b331430a" %}
+{% set version = "1.7.1" %}
+{% set sha256 = "2b497bd7c031c47dfc9d9de7c9744cac64350c7e28ac139bb3a81864166a3208" %}
 
 package:
   name: {{ name|lower }}
@@ -18,19 +19,21 @@ build:
     - amber_MMPBSA = GMXMMPBSA.app:gmxmmpbsa_amber
     - gmx_MMPBSA_ana = GMXMMPBSA.app:gmxmmpbsa_ana
     - gmx_MMPBSA_test = GMXMMPBSA.app:gmxmmpbsa_test
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: "{{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv"
 
 requirements:
   host:
-    - python =3.11
+    - python {{ python_min }}
     - pip
     - setuptools <82
     - versioneer
     - wheel
   run:
-    - python >=3.11,<3.13
+    - python >={{ python_min }},<3.13
     - numpy >=1.26.4,<2
-    - ambertools <24
+    - ambertools >=24.8,<27
+    - gromacs >=2022,<2027
+    - pyqt6
     - mpi4py >=4.0.1,<5
     - matplotlib-base >=3.8.0,<4
     - scipy >=1.14.1,<2
@@ -45,11 +48,14 @@ test:
   imports:
     - GMXMMPBSA
   requires:
-    - pip
+    - python {{ python_min }}
+    - packaging
+  files:
+    - smoke_test.py
   commands:
-    - pip check
     - gmx_MMPBSA -h
     - amber_MMPBSA -h
+    - python smoke_test.py
 
 about:
   home: https://github.com/Valdes-Tresanco-MS/gmx_MMPBSA
@@ -59,8 +65,10 @@ about:
   summary: "gmx_MMPBSA is a new tool based on AMBER's MMPBSA.py aiming to perform end-state free energy calculations with GROMACS files."
   description: |
     gmx_MMPBSA is a new tool based on AMBER's MMPBSA.py aiming to perform end-state free energy calculations with 
-    GROMACS files. It works with all GROMACS versions along with AmberTools20 or 21 and brings improvements in 
-    compatibility, versatility, analyses, and parallelization compared to existing programs. 
+    GROMACS files. It works with all GROMACS versions and also supports native AMBER inputs through amber_MMPBSA.
+    Release testing covers GROMACS >=2022,<2027 and AmberTools >=24.8,<27 with Python >=3.11,<3.13.
+    The Conda recipe selects these tested tool versions.
+    The graphical analyzer uses PyQt6.
     Multiple calculations can be performed with gmx_MMPBSA such as Normal binding free energies, Alanine scanning, 
     Decomposition schemes, Entropy corrections, Stability and QM/MMGBSA
   doc_url: https://valdes-tresanco-ms.github.io/gmx_MMPBSA
