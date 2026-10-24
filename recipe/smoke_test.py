@@ -1,6 +1,7 @@
 """Small integration checks for the installed Conda package and its dependencies."""
 
 import csv
+from importlib import metadata
 import os
 import sys
 from pathlib import Path
@@ -10,6 +11,7 @@ from tempfile import TemporaryDirectory
 
 import numpy as np
 import parmed
+from packaging.requirements import Requirement
 
 
 def run(command, directory, environment):
@@ -23,6 +25,15 @@ def run(command, directory, environment):
 
 
 def main():
+    # AmberTools bundles optional utilities with incomplete Python dependency
+    # metadata. Validate this distribution's requirements rather than failing
+    # on unrelated utilities from a dependency's installation.
+    for declaration in metadata.requires('gmx_MMPBSA') or ():
+        requirement = Requirement(declaration)
+        if requirement.marker is None or requirement.marker.evaluate():
+            installed = metadata.version(requirement.name)
+            assert installed in requirement.specifier, f'{requirement}: found {installed}'
+
     environment = os.environ.copy()
     environment.update(OMP_NUM_THREADS='1', QT_QPA_PLATFORM='offscreen')
     if hasattr(os, 'geteuid') and os.geteuid() == 0:
